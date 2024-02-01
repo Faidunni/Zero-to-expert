@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .password {
+        width: 50%;
+        padding: 20px;
+        outline: none;
+        margin-bottom: 0.5rem;
+        margin-top: 0.3rem;
+      }
+
+      label {
+        color: rebeccapurple;
+      }
+
+      .btn {
+        width: 20%;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <label class="small_p">Input password..</label><br />
+    <input type="password" class="password" /> <br />
+    <button class="btn submit">Submit!</button>
+  </body>
+  <script>
+    document.querySelector(".submit").addEventListener("click", function () {
+      const password = document.querySelector(".password").value;
+      console.log(typeof password);
+
+      if (!password) {
+        document.querySelector(".password").style.borderColor = "#ff0000";
+        document.querySelector(".small_p").style.color = "#ff0000";
+        document.querySelector(".small_p").textContent = "Enter Password...";
+        document.querySelector(".small_p").style.fontSize = "18px";
+      } else if (password.length < 5) {
+        document.querySelector(".password").style.borderColor = "#ff0000";
+        document.querySelector(".small_p").style.color = "#ff0000";
+        document.querySelector(".small_p").textContent = "Invalid Password..";
+        document.querySelector(".small_p").style.fontSize = "18px";
+      } else if (password.length > 5) {
+        document.querySelector(".password").style.borderColor = "#008000";
+        document.querySelector(".small_p").textContent = "Congratulation..🎉";
+        document.querySelector(".small_p").style.color = "#008000";
+        document.querySelector(".small_p").style.fontSize = "20px";
+      }
+    });
+  </script>
+</html>
