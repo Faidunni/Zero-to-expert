@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/6bbebbe04f.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
     <style>
       .password {
@@ -21,34 +25,97 @@
         width: 20%;
         height: 40px;
       }
+
+      .show-content {
+        padding: 10px;
+        width: 200px;
+        font-size: 18px;
+        background-color: rgb(211, 202, 202);
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+
+      i {
+        margin-left: 7px;
+        font-size: 16px;
+        color: rgb(255, 100, 152);
+      }
+
+      .modal {
+        background-color: gray;
+        padding: 10px 30px;
+        width: 30%;
+        position: relative;
+        margin-top: 2rem;
+        border-radius: 5px;
+        top: 0;
+      }
+
+      .close-modal {
+        font-size: 40px;
+        background: transparent;
+        border: none;
+        position: absolute;
+        right: 10%;
+        top: 2px;
+        color: rgb(255, 100, 152);
+      }
+
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <label class="small_p">Input password..</label><br />
+    <!-- <label class="small_p">Input password..</label><br />
     <input type="password" class="password" /> <br />
-    <button class="btn submit">Submit!</button>
+    <button class="btn submit">Submit!</button> -->
+
+    <!-- button -->
+    <button class="show-content">
+      Show content <i class="fa-solid fa-chevron-down"></i>
+    </button>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1>Hello,</h1>
+      <p>I am the CEO <i class="fa-solid fa-user-tie"></i></p>
+      <img src="" alt="" />
+    </div>
   </body>
   <script>
-    document.querySelector(".submit").addEventListener("click", function () {
-      const password = document.querySelector(".password").value;
-      console.log(typeof password);
+    // document.querySelector(".submit").addEventListener("click", function () {
+    //   const password = document.querySelector(".password").value;
+    //   console.log(typeof password);
 
-      if (!password) {
-        document.querySelector(".password").style.borderColor = "#ff0000";
-        document.querySelector(".small_p").style.color = "#ff0000";
-        document.querySelector(".small_p").textContent = "Enter Password...";
-        document.querySelector(".small_p").style.fontSize = "18px";
-      } else if (password.length < 5) {
-        document.querySelector(".password").style.borderColor = "#ff0000";
-        document.querySelector(".small_p").style.color = "#ff0000";
-        document.querySelector(".small_p").textContent = "Invalid Password..";
-        document.querySelector(".small_p").style.fontSize = "18px";
-      } else if (password.length > 5) {
-        document.querySelector(".password").style.borderColor = "#008000";
-        document.querySelector(".small_p").textContent = "Congratulation..🎉";
-        document.querySelector(".small_p").style.color = "#008000";
-        document.querySelector(".small_p").style.fontSize = "20px";
-      }
+    //   if (!password) {
+    //     document.querySelector(".password").style.borderColor = "#ff0000";
+    //     document.querySelector(".small_p").style.color = "#ff0000";
+    //     document.querySelector(".small_p").textContent = "Enter Password...";
+    //     document.querySelector(".small_p").style.fontSize = "18px";
+    //   } else if (password.length < 5) {
+    //     document.querySelector(".password").style.borderColor = "#ff0000";
+    //     document.querySelector(".small_p").style.color = "#ff0000";
+    //     document.querySelector(".small_p").textContent = "Invalid Password..";
+    //     document.querySelector(".small_p").style.fontSize = "18px";
+    //   } else if (password.length > 5) {
+    //     document.querySelector(".password").style.borderColor = "#008000";
+    //     document.querySelector(".small_p").textContent = "Congratulation..🎉";
+    //     document.querySelector(".small_p").style.color = "#008000";
+    //     document.querySelector(".small_p").style.fontSize = "20px";
+    //   }
+    // });
+
+    const modal = document.querySelector(".modal");
+    const openBtnModal = document.querySelector(".show-content");
+    const closedBtnModal = document.querySelector(".close-modal");
+
+    openBtnModal.addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+
+    closedBtnModal.addEventListener("click", function () {
+      modal.classList.add("hidden");
     });
   </script>
 </html>
