@@ -43,6 +43,11 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
+  },
 };
 
 restaurant.orderDelivery({
@@ -168,3 +173,44 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+// Destructing using REST
+
+//SPREAD, because on RIGHT SIDE OF =
+const arra = [1, 2, ...[3, 4]];
+
+// REST: because on LEFT SIDE OF =
+const [g, h, ...other] = [1, 2, 3, 4, 5];
+console.log(g, h, other);
+
+const [pizza, , risotto, ...otherfood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, ...otherfood);
+
+// REST ON OBJECTS
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// FUNCTION USING REST
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 4, 3);
+add(2, 3, 4, 5, 7, 8, 9);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
+restaurant.orderPizza("mushroom");
+
+// SHORT CIRCUITING (&& AND ||)
+console.log(3 || "jonas");
+console.log("" || "jonas");
+console.log(true || 0);
+console.log(undefined || null);
