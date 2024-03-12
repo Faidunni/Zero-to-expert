@@ -177,3 +177,18 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? "FIRST" : "SECOND";
   console.log(`[${half} HALF] ${min} : ${event}`);
 }
+
+// challenge 4
+document.querySelector("button").addEventListener("click", function () {
+  const text = document.querySelector("textarea").value;
+  console.log(text);
+});
+
+const changeName = function (a_b) {
+  const details = [];
+  for (const a of a_b) {
+    details.push(a.replace("_", ""));
+  }
+};
+
+console.log(changeName(underscore_case));
