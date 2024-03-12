@@ -157,9 +157,23 @@ gameEvents
   .set("Second Half", 97);
 console.log(gameEvents);
 
-// rest.get(rest.get(time > rest.get("open") && time < rest.get("close")));
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+
+// other method
+const time = [...gameEvents.keys()].pop();
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
 
 // for (const [key, value] of gameEvents) {
 //   gameEvents.get(gameEvents.get(gameEvents.get("First Half") > 45));
 //   console.log([...gameEvents.get(true)]);
-// }
+// }my method and it was wrong
+
+// 4.
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? "FIRST" : "SECOND";
+  console.log(`[${half} HALF] ${min} : ${event}`);
+}

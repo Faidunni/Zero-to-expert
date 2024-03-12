@@ -463,5 +463,154 @@ console.log(question.get(question.get(`correct`) === answer));
 
 // converting Map to arrays
 console.log([...question]);
-console.log([...question.key()]);
+// console.log([...question.key()]);
 console.log([...question.values()]);
+
+// WORKING WITH STRINGS
+const airline = "TAP AIR Portugal";
+// const plane = "A320";
+
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(plane[3]);
+console.log("8737"[0]);
+
+console.log(airline.length);
+console.log("8737".length);
+
+console.log(airline.indexOf("R"));
+console.log(airline.lastIndexOf("r"));
+console.log(airline.indexOf("Portugal"));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middleseat
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") console.log("You got the middleseat");
+  else console.log("You got lucky");
+};
+
+checkMiddleSeat("118");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+const checkOtherSeat = function (seat) {
+  const S = seat.slice(-1);
+  if (S === "A" || S === "D") console.log("You got the other seat");
+  else console.log("You got the middle seat");
+};
+
+checkOtherSeat("118");
+checkOtherSeat("11A");
+checkOtherSeat("11D");
+checkOtherSeat("11F");
+checkOtherSeat("A23");
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// FIX CAPITALIZATION IN NAME
+const passenger = "jOnas";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// CHECK EMAIL
+const email = "hello@jonas.io";
+const loginEmail = "    Hello@Jonas.Io \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = `288,97$`;
+const priceUS = priceGB
+  .replace("$", "#")
+  .replace(",", ".")
+  .replace("288", "882");
+console.log(priceUS);
+
+const announcement = `All passengers come to boarding door 23. Boarding door 23!`;
+
+console.log(announcement.replaceAll("door", "gate"));
+
+// Booleans
+const plane = "Airbus A320neo";
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.includes("Airb"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log(`Part of the NEW AIRbus family`);
+}
+
+// practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log(`You are NOT allowed on board`);
+  } else {
+    console.log(`Welcome aboard!`);
+  }
+};
+
+checkBaggage(`I have a laptop, some Food and a pocket Knife`);
+checkBaggage(`Socks and camera`);
+checkBaggage(`Got some snacks and a Gun for protection`);
+
+console.log(`a+very+nice+string`.split("+"));
+console.log(`Jonas Schmedtmann`.split(" "));
+
+const [firstName, lastName] = "Jonas Schmedtmann".split(" ");
+
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+
+    // other method of writing
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(" "));
+};
+
+capitalizeName("jessica ann smith davis");
+capitalizeName("jonas schmedtmann");
+
+// Padding
+const message = "Go to get 23";
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+console.log("Jonas".padStart(25, "+"));
+
+// credit card example
+const maskCreditCard = function (number) {
+  const str = number + " "; //to convert to a string
+  const last = str.slice(-5);
+  return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(64638638));
+console.log(maskCreditCard(346812908367995896));
+console.log(maskCreditCard("36738920876525678392765"));
