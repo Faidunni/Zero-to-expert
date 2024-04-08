@@ -178,17 +178,25 @@ for (const [min, event] of gameEvents) {
   console.log(`[${half} HALF] ${min} : ${event}`);
 }
 
+// underscore_case;
+// first_name;
+// Some_Variable;
+// calculate_AGE;
+// delayed_departure;
+
 // challenge 4
-document.querySelector("button").addEventListener("click", function () {
-  const text = document.querySelector("textarea").value;
-  console.log(text);
-});
 
-const changeName = function (a_b) {
-  const details = [];
-  for (const a of a_b) {
-    details.push(a.replace("_", ""));
+// document.querySelector("button").addEventListener("click", function () {
+//   const text = document.querySelector("textarea").value;
+//   const rows = text.split("\n");
+//   console.log(text);
+
+  for (const [i, row] of rows) {
+    const [first, second] = row.toLowerCase().trim().split("_");
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${"✅".repeat(i + 1)}`);
   }
-};
-
-console.log(changeName(underscore_case));
+});

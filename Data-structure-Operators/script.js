@@ -625,3 +625,48 @@ const planesInLine = function (n) {
 planesInLine(5);
 planesInLine(3);
 planesInLine(12);
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+console.log(flights.split("+"));
+
+// to conver the flight code
+const getCode = (str) => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split("+")) {
+  // console.log(flight.split(";"));
+  // using destructuring
+  const [type, from, to, time] = flight.split(";");
+  const output = `${type.startsWith("_Delayed") ? " 🛑" : ""}${type.replaceAll(
+    "_",
+    " "
+  )} ${getCode(from)} ${getCode(to)} (${time.replace(":", "h")})`.padStart(40);
+  console.log(output);
+
+  // how to add emoji to show the fligt was delayed you use startwith
+}
+// console.log(flights.split("+").replace("_", " "));
+// const flightArrangement = flights.toUpperCase().trim().split("+");
+// const flightArrangement = flights.replaceAll("_", " ");
+// console.log(flightArrangement);
+// const flightarrangement = flightArrangement.split("\n");
+// console.log(flightarrangement);
+// console.log(flightArrangement);
+// console.log(flightArrangement);
+// console.log(flightArrangement.replaceAll("_", " "));
+// console.log(flights.replace("_", " "));
+
+// const flightNumber = function () {
+//   const flights =
+//     "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+//   const row = flights.split("\n");
+//   // console.log(flightNumber);
+
+//   for (const number of row) {
+//     const [middleName, normalName] = flights.toLowerCase().trim().split("+");
+//     console.log(flights);
+//   }
+// };
+
+// flightNumber();
