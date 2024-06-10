@@ -81,8 +81,80 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+const displaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = acc.movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * acc.interest) / 100)
+    .filter((int, i, arr) => {
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+// EVENT HANDLER
+let currentAccount;
+
+btnLogin.addEventListener("click", function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display Yall and welcome message
+    console.log("LOGIN");
+
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // clear input field
+    inputLoginUsername = inputLoginPin.value = "";
+    inputLoginPin.blur();
+
+    // DISPLAY MOVEMENT
+    displayMovements(currentAccount.movements);
+
+    // DISPLAY BALANCE
+    calcDisplayBalance(currentAccount.movements);
+
+    // DISPLAY SUMMARY
+    displaySummary(currentAccount);
+  }
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -93,7 +165,7 @@ displayMovements(account1.movements);
 //   ["GBP", "Pound sterling"],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -228,4 +300,86 @@ displayMovements(account1.movements);
 // //   console.log(`${key}: ${value}`);
 // // });
 
-// CHALLENGE;
+// MAP METHOD
+const eurToUsd = 1.1;
+
+// const movementUSD = movements.map(function(mov){
+//   return mov * eurToUsd;
+// })
+
+// using arrow function
+// const movementUSD = movements.map(mov =>
+//   mov * eurToUsd
+// )
+// console.log(movements);
+// console.log(movementUSD);
+
+// const movementUSDfor = [];
+// for(const mov of movements) movementUSDfor.push(mov * eurToUsd);
+// console.log(movementUSDfor);
+
+// const movemntdirection = movements.map((mov, i, arr) => {
+//   if(mov > 0) {
+//     return (`Movement ${i + 1}: You deposit ${mov}`)
+//   } else {
+//     return (`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`)
+//   }
+// });
+// console.log(movemntdirection)
+
+// FILTER METHOD
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+
+console.log(withdrawals);
+
+// REDUCE METHOD
+console.log(movements);
+
+// Accumulator is like a snow ball
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   concole.log(`Iteration ${i}: ${acc}`)
+//   return acc + cur;
+// }, 0);
+// console.log(balance)
+
+// USING ARROW FUNCTION
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// MAXIMUM VALUE
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return;
+  else return mov;
+}, movements[0]);
+console.log(max);
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter((mov) => mov > 0)
+  .map((mov) => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+
+// Find method
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+console.log(account);
