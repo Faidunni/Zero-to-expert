@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Timer Example</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Timer Example</h1>
+      <p id="timerDisplay">0</p>
+      <button id="startButton">Start Timer</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #timerDisplay {
+    font-size: 2em;
+    margin: 20px 0;
+  }
+
+  #startButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+
+  #startButton:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<script>
+  class Timer {
+    constructor(displayElement) {
+      this.seconds = 0;
+      this.displayElement = displayElement;
+      this.intervalId = null;
+    }
+
+    start() {
+      this.seconds++;
+      this.displayElement.textContent = this.seconds;
+    }
+
+    startTimer() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const timerDisplay = document.getElementById('timerDisplay');
+        const startButton = document.getElementById('startButton');
+
+        starr;
+      });
+    }
+  }
+</script>
