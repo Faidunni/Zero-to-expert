@@ -581,3 +581,34 @@ console.log(numDeposits1000);
 let a = 10;
 console.log(a++);
 console.log(++a);
+
+// 3
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+console.log(sums);
+
+// 4
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const expections = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (expections.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
