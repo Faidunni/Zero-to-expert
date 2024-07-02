@@ -15,7 +15,7 @@ const tabsContent = document.querySelectorAll('.operations__content');
 ///////////////////////////////////////
 // Modal window
 
-const openModal = function () {
+const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');

@@ -4,32 +4,39 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnClosedModal = document.querySelector(".close-modal");
 const btnsOpenModal = document.querySelectorAll(".show-modal");
-console.log(btnsOpenModal);
 
 for (let i = 0; i < btnsOpenModal.length; i++)
   console.log(btnsOpenModal[i].textContent);
+// const modal = document.querySelector(".modal");
+// const overlay = document.querySelector(".overlay");
+// const btnClosedModal = document.querySelector(".close-modal");
+// const btnsOpenModal = document.querySelectorAll(".show-modal");
+// console.log(btnsOpenModal);
 
-// working with classes
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener("click", function () {
-    console.log("Button clicked");
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-  });
+// for (let i = 0; i < btnsOpenModal.length; i++)
+//   console.log(btnsOpenModal[i].textContent);
 
-const closedModal = function () {
-  modal.classList.add("hidden");
-  overlay.classList.add("hidden");
-};
+// // working with classes
+// for (let i = 0; i < btnsOpenModal.length; i++)
+//   btnsOpenModal[i].addEventListener("click", function () {
+//     console.log("Button clicked");
+//     modal.classList.remove("hidden");
+//     overlay.classList.remove("hidden");
+//   });
 
-btnClosedModal.addEventListener("click", closedModal);
+// const closedModal = function () {
+//   modal.classList.add("hidden");
+//   overlay.classList.add("hidden");
+// };
 
-overlay.addEventListener("click", closedModal);
+// btnClosedModal.addEventListener("click", closedModal);
 
-document.addEventListener("keydown", function (e) {
-  console.log(e.key);
+// overlay.addEventListener("click", closedModal);
 
-  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-    closedModal();
-  }
-});
+// document.addEventListener("keydown", function (e) {
+//   console.log(e.key);
+
+//   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+//     closedModal();
+//   }
+// });
