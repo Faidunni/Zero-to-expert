@@ -9,19 +9,52 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  color: #333;
-  line-height: 1.5;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background: linear-gradient(to top left, #28b487, #7dd56f);
+.accordion {
+  background-color: red;
+}
+.accordion p {
+  font-size: 40px;
 }
 
-.show-modal {
+.modal {
+  background-color: black;
+  color: white;
+}
+.text {
+  font-size: 20px;
+}
+
+.display {
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: none;
+}
+
+/* .show-modal {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.75rem 3.5rem;
@@ -51,11 +84,11 @@ h1 {
 
 p {
   font-size: 1.8rem;
-}
+} */
 
 /* -------------------------- */
 /* CLASSES TO MAKE MODAL WORK */
-.hidden {
+/* .hidden {
   display: none;
 }
 
@@ -82,4 +115,4 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
-}
+} */
