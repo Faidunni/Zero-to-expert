@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .list-content {
+        background-color: black;
+        color: white;
+        width: 75%;
+      }
+
+      .group-form {
+        padding: 20px 20px;
+      }
+
+      .btn-delete {
+        padding: 10px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="list-item">
+      <form action="" class="form">
+        <div form="group-form">
+          <input type="text" class="input" />
+          <button type="submit" class="btn">submit</button>
+        </div>
+      </form>
+
+      <!-- <li class="list-list">
+        <div class="list-content">
+          <h2>Monday, 24th 2024</h2>
+          <p class="list-description">hello</p>
+        </div>
+      </li> -->
+    </ul>
+
+    <script>
+      const btn = document.querySelector(".btn");
+      const input = document.querySelector(".input");
+      const form = document.querySelector(".form");
+
+      btn.addEventListener("click", function (e) {
+        const type = input.value;
+        const date = new Date();
+
+        e.preventDefault();
+        const html = `
+        
+        <div class="list-content">
+          <h2>${date.getMonth()}, ${date.getDate()} ${date.getFullYear()}</h2>
+          <p class="list-description">${type}</p>
+          <button type="submit" class="btn-delete">Delete</button>
+        </div>
+        `;
+
+        form.insertAdjacentHTML("afterend", html);
+      });
+    </script>
+  </body>
+</html>
